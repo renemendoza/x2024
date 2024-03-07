@@ -1,0 +1,43 @@
+customer_1:
+  id_servicio: 429
+  ip: "100.100.34.217"
+  coordenadas: ""
+  estado: "Activo"
+  usuario_cpe: ""
+  password_cpe: ""
+  protocolo_conexion_cpe: ""
+  mac_cpe: "BC:E6:7C:00:8B:09"
+  interfaz_lan: "vlan16"
+  ip_router_wifi: null
+  modelo_router_wifi: ""
+  usuario_router_wifi: ""
+  password_router_wifi: ""
+  ssid_router_wifi: ""
+  password_ssid_router_wifi: ""
+  mac_router_wifi: ""
+  sn_onu: ""
+  facturas_pagadas: true
+  firewall: true
+  auto_activar_servicio: false
+  forma_contratacion: "otros"
+  fecha_registro: "08/30/2021 17:33:38"
+  fecha_instalacion: "12/09/2021 15:14:00"
+  fecha_cancelacion: null
+  comentarios: ""
+  zona:
+    id: 35760
+    nombre: "Villas Del Mar 3"
+  router:
+    id: 31575
+    nombre: "Villas Del Mar 3"
+  sectorial: null
+  modelo_antena: null
+  plan_internet:
+    id: 110189
+    nombre: "ACTIVOS"
+  asesor:
+    id: 876773
+    nombre: "Erick Castañeda"
+  tecnico:
+    id: 876773
+    nombre: "Erick Castañeda"

@@ -1,0 +1,40 @@
+<h1>CLIENTES WISPHUB</h1>
+
+<table id="customers-table">
+  <thead>
+    <tr>
+      <th>NOMBRE</th>
+      <th>SERVICIO</th>
+      <th>ESTAD0</th>
+      <th>FACTURAS PAGADAS</th>
+      <th>FECHA INSTALACION</th>
+      <th>SALDO </th>
+      <th>ZONA </th>
+
+      <!--
+      <th>FINANZA</th>
+      <th>MONITOREO</th>
+      <th>SOPORTE</th>
+      -->
+    </tr>
+  </thead>
+  <tbody>
+    <% @customers.each do |customer| %>
+      <tr>
+        <td><%= customer.nombre %></td>
+        <td><%= customer.servicio_id %></td>
+        <td><%= customer.estado %></td>
+        <td><%= customer.estado_facturas %></td>
+        <td><%= customer.fecha_instalacion %></td>
+        <td><%= customer.saldo %></td>
+        <td><%= customer.zona["nombre"] %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<script type="text/javascript">
+  document.addEventListener("htmx:load", function(event) {
+    htmx.ajax('#customers-table', '/customers');
+  });
+</script>

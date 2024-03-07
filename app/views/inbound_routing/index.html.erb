@@ -1,0 +1,40 @@
+<h1>InboundRouting#index</h1>
+<p>Miss me with that thing</p>
+
+<div class="table-responsive">
+  <table class="table table-vcenter">
+    <thead>
+      <tr>
+        <th>id</th>
+        <th>alias_username</th>
+        <th>alias_domain</th>
+        <th>username</th>
+        <th>domain</th>
+        <th class="w-1"></th>
+      </tr>
+    </thead>
+    <tbody>
+      <% @inbound_routings.each do |ir| %>
+      <tr>
+        <td><%= ir.id %></td>
+        <td><%= ir.alias_username %></td>
+        <td class="text-secondary">
+          <%= ir.alias_domain %>
+        </td>
+        <td class="text-secondary">
+          <a href="#" class="text-reset">
+            <%= ir.username %>
+          </a>
+        </td>
+        <td class="text-secondary">
+            <%= ir.domain %>
+        </td>
+        <td>
+          <a href="#">Edit</a>
+        </td>
+      </tr>
+    <% end %>
+    </tbody>
+  </table>
+</div>
+
