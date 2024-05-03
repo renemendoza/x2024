@@ -1,11 +1,12 @@
-<h1>CLIENTES WISPHUB</h1>
-
-<table id="customers-table">
+<table id="customers">
   <thead>
     <tr>
-      <th>NOMBRE</th>
+      <style>
+        me th[n] { font-size: 2rem; }
+      </style>
+      <th n>CLIENTES WISPHUB</th>
       <th>SERVICIO</th>
-      <th>ESTAD0</th>
+      <th>ESTADO</th>
       <th>FACTURAS PAGADAS</th>
       <th>FECHA INSTALACION</th>
       <th>SALDO </th>
@@ -21,12 +22,18 @@
   <tbody>
     <% @customers.each do |customer| %>
       <tr>
+        <style>
+          me td { border: 2px solid #a9a9a9; }
+          me td[n1] { border: 2px solid green; }
+        </style>
         <td><%= customer.nombre %></td>
         <td><%= customer.servicio_id %></td>
         <td><%= customer.estado %></td>
         <td><%= customer.estado_facturas %></td>
         <td><%= customer.fecha_instalacion %></td>
-        <td><%= customer.saldo %></td>
+        <td n1>
+            <%= customer.saldo %>
+        </td>
         <td><%= customer.zona["nombre"] %></td>
       </tr>
     <% end %>
@@ -34,7 +41,9 @@
 </table>
 
 <script type="text/javascript">
+  /*
   document.addEventListener("htmx:load", function(event) {
-    htmx.ajax('#customers-table', '/customers');
+    htmx.ajax('#customers', '/customers');
   });
+  */
 </script>

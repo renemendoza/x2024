@@ -1,12 +1,54 @@
-class Customer
+class Customer < ActiveRecord::Base
 
-  attr_accessor :servicio_id, :estado, :facturas_pagadas, :fecha_registro 
-  attr_accessor :fecha_instalacion, :fecha_cancelacion, :plan_internet_id, :comentarios
-  attr_accessor  :zona, :coordenadas, :ip, :asesor, :nombre, :estado_facturas, :saldo
+  def initialize(data)
+    #@servicio_id = data.delete "id_servicio"
+    data.collect do |key,value|
+      instance_variable_set("@#{key}".to_sym, value) unless key.nil?
+    end
+  end
 
-  INITIAL_OFFSET=0
-  INITIAL_LIMIT_COUNT=5
 
+  def self.wisphub_get(customer_id=429)
+    api = WisphubApiConnection.new
+    return api.get("/clientes/#{customer_id}")
+    #deberia parsearlo aqui
+    #return api.get("/clientes/#{customer_id}")
+  end
+
+  def self.wisphub_get_list(page_size=nil)
+    api = WisphubApiConnection.new
+   # return api.get_clients() #a list of instantiated clients
+    return api.get("/clientes/", page_size)
+
+      #parse as Customer.activerecord (mongodb backed) class, pero esto quiza con el que esta controlando el loop
+      #and then persist or better upsert the data
+  end
+end
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+#  attr_accessor :servicio_id, :estado, :facturas_pagadas, :fecha_registro 
+#  attr_accessor :fecha_instalacion, :fecha_cancelacion, :plan_internet_id, :comentarios
+#  attr_accessor  :zona, :coordenadas, :ip, :asesor, :nombre, :estado_facturas, :saldo
+#
+#  INITIAL_OFFSET=0
+#  INITIAL_LIMIT_COUNT=5
+#
 #  CUSTOMER_KEYS= %w(estado facturas_pagadas fecha_registro fecha_instalacion
 #  fecha_cancelacion plan_internet_id comentarios zona coordenadas ip asesor usuario)
 
@@ -14,40 +56,45 @@ class Customer
 #    return CUSTOMER_KEYS
 #  end
 
-  def initialize(data)
-    @servicio_id = data.delete "id_servicio"
-    data.collect do |key,value|
-      instance_variable_set("@#{key}".to_sym, value) unless key.nil?
-    end
-  end
-
-  def self.from_wisphub
-    results = load_segment(10)
-    results.collect do |row|
-      Customer.new row
-    end
-  end
-
-  def self.load_segment(limit_count=INITIAL_LIMIT_COUNT, offset=INITIAL_OFFSET)
-    customer_data = WisphubApiConnection.make_request("clientes/?limit=#{limit_count}&offset=#{offset}")
-    return customer_data['results']
-  end
 
 
-  def self.load(customer_id)
-    customer_data = WisphubApiConnection.make_request("clientes/#{customer_id}/")
-    customer = Customer.new(*
-      customer_data.slice(
-        *%w(id_servicio estado facturas_pagadas fecha_registro) ).values
-    )
+  #def self.load_segment(limit_count=INITIAL_LIMIT_COUNT, offset=INITIAL_OFFSET)
+  #  #customer_data = WisphubApiConnection.make_request("clientes/?limit=#{limit_count}&offset=#{offset}")
+  #  customer_data = WisphubApiConnection.new.get("/clientes/")
+  #  return customer_data['results']
+  #end
 
-    return customer
-  end
-
-end
+  #customer = WisphubApiConnection.make_request('clientes/429/')
 
     #@customers = Customer.all
     #customer = WisphubApiConnection.make_request('clientes/429/')
+    #@customers = Customer.all
+    #customer = WisphubApiConnection.make_request('clientes/429/')
+
+#  def self.from_wisphub
+#    results = load_segment(10)
+#    results.collect do |row|
+#      Customer.new row
+#    end
+#  end
+#
+#  def self.load_segment(limit_count=INITIAL_LIMIT_COUNT, offset=INITIAL_OFFSET)
+#    customer_data = WisphubApiConnection.make_request("clientes/?limit=#{limit_count}&offset=#{offset}")
+#    return customer_data['results']
+#  end
+#
+#
+#  def self.load(customer_id)
+#    customer_data = WisphubApiConnection.make_request("clientes/#{customer_id}/")
+#    customer = Customer.new(*
+#      customer_data.slice(
+#        *%w(id_servicio estado facturas_pagadas fecha_registro) ).values
+#    )
+#
+#    return customer
+#  end
+
+
 
  # def self.load_count(limit_count=4)
  #   customers = []

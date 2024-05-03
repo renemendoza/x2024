@@ -1,5 +1,5 @@
 customer_1:
-  id_servicio: 429
+  servicio_id: 429
   ip: "100.100.34.217"
   coordenadas: ""
   estado: "Activo"

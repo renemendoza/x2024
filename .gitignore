@@ -42,3 +42,7 @@ storage/*
 /node_modules
 
 /config/database.yml
+
+/db/*.sqlite3*
+.gitattributes
+.noenv

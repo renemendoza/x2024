@@ -5,7 +5,7 @@
     "@popperjs/core": "^2.11.8",
     "@tabler/core": "^1.0.0-beta20",
     "autoprefixer": "^10.4.17",
-    "bootstrap": "^5.3.2",
+    "bootstrap": "^5.3.1",
     "bootstrap-icons": "^1.11.3",
     "esbuild": "^0.20.1",
     "htmx.org": "^1.9.10",

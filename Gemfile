@@ -72,3 +72,5 @@ gem "shotgun", "~> 0.9.2"
 gem "mysql2", "~> 0.5.6"
 
 gem "dotenv", "~> 3.1"
+
+gem "faraday-follow_redirects", "~> 0.3.0"
