@@ -166,4 +166,7 @@ revisar "https://github.com/0000marcell/nvim-dap-ruby/blob/master/lua/dap-ruby.l
 
 
 
-
+./ngrok http 9393   #rails port
+ngrok http 9393
+ngrok config add-authtoken NGROK_AUTHTOKEN
+ngrok http 9393
