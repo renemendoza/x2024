@@ -10,8 +10,11 @@
     "esbuild": "^0.20.1",
     "htmx.org": "^1.9.10",
     "nodemon": "^3.0.3",
-    "postcss": "^8.4.35",
+    "postcss": "^8.4.38",
     "postcss-cli": "^11.0.0",
+    "postcss-flexbugs-fixes": "^5.0.2",
+    "postcss-import": "^16.1.0",
+    "postcss-nested": "^6.0.1",
     "sass": "^1.71.0"
   },
   "scripts": {

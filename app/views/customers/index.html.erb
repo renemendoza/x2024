@@ -1,49 +1,27 @@
-<table id="customers">
-  <thead>
-    <tr>
-      <style>
-        me th[n] { font-size: 2rem; }
-      </style>
-      <th n>CLIENTES WISPHUB</th>
-      <th>SERVICIO</th>
-      <th>ESTADO</th>
-      <th>FACTURAS PAGADAS</th>
-      <th>FECHA INSTALACION</th>
-      <th>SALDO </th>
-      <th>ZONA </th>
+<style>
+  me p.action_new { float: right; }
+</style>
+<div id="customers">
+  <p class="action_new" hx-get="/customers/new"> Agregar Cliente </p>
+  <table>
+    <tbody>
+      <% @customers.each do |customer| %>
+        <tr>
+          <style>
+            me td { border: 2px solid #a9a9a9; }
+            me td[n1] { border: 2px solid green; }
+          </style>
+          <td><%= customer.name %></td>
+          <td n1>
+            <p hx-delete="/customers/<%= customer.id %>"
+            hx-swap="outerHTML", hx-target="#customers">
+            [x]
+          </p> 
+          </td>
+        </tr>
+      <% end %>
+    </tbody>
+  </table>
+</div>
 
-      <!--
-      <th>FINANZA</th>
-      <th>MONITOREO</th>
-      <th>SOPORTE</th>
-      -->
-    </tr>
-  </thead>
-  <tbody>
-    <% @customers.each do |customer| %>
-      <tr>
-        <style>
-          me td { border: 2px solid #a9a9a9; }
-          me td[n1] { border: 2px solid green; }
-        </style>
-        <td><%= customer.nombre %></td>
-        <td><%= customer.servicio_id %></td>
-        <td><%= customer.estado %></td>
-        <td><%= customer.estado_facturas %></td>
-        <td><%= customer.fecha_instalacion %></td>
-        <td n1>
-            <%= customer.saldo %>
-        </td>
-        <td><%= customer.zona["nombre"] %></td>
-      </tr>
-    <% end %>
-  </tbody>
-</table>
 
-<script type="text/javascript">
-  /*
-  document.addEventListener("htmx:load", function(event) {
-    htmx.ajax('#customers', '/customers');
-  });
-  */
-</script>

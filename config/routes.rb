@@ -1,6 +1,11 @@
 Rails.application.routes.draw do
-  resources 'inbound_routing'
+  resources 'voip_trunks'
+  resources 'numbers'
   resources 'customers'
+  resources 'carriers'
+  resources 'subscribers'
+  resources 'cdrs'
+  resources 'domains'
 #  get 'test/test'
   # Define your application routes per the DSL in https://guides.rubyonrails.org/routing.html
 

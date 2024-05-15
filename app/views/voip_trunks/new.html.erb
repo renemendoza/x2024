@@ -1,0 +1,20 @@
+<style>
+  me form { float: right; margin-right: 2em;}
+  me input { float: right; }
+  me button { float: right; }
+  me label { font-size: 1.2rem; }
+</style>
+<form hx-post="/voip_trunks" hx-target="#trunks" hx-swap="outerHTML">
+   <label for="nombre">Nombre:</label>
+   <input type="text" id="nombre" name="nombre">
+   <br/>
+   <label for="host">Host:</label>
+   <input type="text" id="host" name="host">
+   <br/>
+   <!--
+   <label for="tag">Tag:</label>
+   <input type="text" id="tag" name="tag" required class="form-control">
+   <br/>
+   -->
+   <button> Agregar Troncal </button>
+</form>

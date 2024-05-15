@@ -1,0 +1,27 @@
+<style>
+  me form { float: right; margin-right: 2em;}
+  me label { font-size: 1.2rem; }
+</style>
+<form hx-post="/customers" hx-target="#customers" hx-swap="outerHTML">
+   <label for="nombre">Nombre:</label>
+   <input type="text" id="nombre" name="nombre" required class="form-control">
+   <%# <button> Agregar Cliente </button> %>
+   <br/>
+   <p> Agregar Cliente </p>
+</form>
+
+      <%#   me th[n] { font-size: 2rem; } %>
+<!--
+                                                         hx-get="/customers/new"
+  <script type="text/javascript">
+    document.addEventListener("htmx:load", function(event) {
+      htmx.ajax('#customers', '/customers');
+    });
+  </script>
+
+            <p hx-get="/customers/new">
+            </p>
+      <th>FINANZA</th>
+      <th>MONITOREO</th>
+      <th>SOPORTE</th>
+-->
