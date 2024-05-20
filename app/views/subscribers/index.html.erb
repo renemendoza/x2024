@@ -1,0 +1,36 @@
+<style>
+  me p.action_new { float: right; }
+</style>
+<div id="subscribers">
+  <p class="action_new" hx-get="/subscribers/new" hx-trigger="click once"> Agregar Subscriptor</p>
+  <table>
+    <thead>
+      <tr>
+        <th>username</th>
+        <th>domain</th>
+        <th>customer</th>
+      </tr>
+    </thead>
+    <tbody>
+      <% @subscribers.each do |subscriber| %>
+        <tr>
+          <style>
+            me td { border: 2px solid #a9a9a9; }
+            me td[n1] { border: 2px solid green; }
+          </style>
+          <td><%= subscriber.username %></td>
+          <td><%= subscriber.domain %></td>
+          <td><%= subscriber.customer.name %></td>
+          <td n1>
+            <p hx-delete="/subscriber/<%= subscriber.id %>"
+            hx-swap="outerHTML", hx-target="#domains">
+            [x]
+          </p> 
+          </td>
+        </tr>
+      <% end %>
+    </tbody>
+  </table>
+</div>
+
+

@@ -1,0 +1,5 @@
+<select name="customer_id" id="customer_id">
+  <% @customers.each do |customer| %>
+    <option value="<%= customer.id %>"><%= customer.name %></option>
+  <% end %>
+</select>

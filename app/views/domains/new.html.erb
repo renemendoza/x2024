@@ -1,0 +1,13 @@
+<style>
+  me form { margin: 2em;}
+  me label { font-size: 1.2rem; }
+</style>
+<form hx-post="/domains" hx-target="#domains" hx-swap="outerHTML">
+   <label for="nombre">Nombre del dominio:</label>
+   <input type="text" id="nombre" name="nombre" required class="form-control">
+   <br/>
+   <label for="host">Cliente:</label>
+   <%= render '/customers/menu' %>
+   <br/>
+   <button> Agregar Dominio </button>
+</form>

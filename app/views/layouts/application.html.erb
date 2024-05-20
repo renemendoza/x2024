@@ -15,23 +15,38 @@
   <body hx-headers='{"X-CSRF-Token": "<%= form_authenticity_token %>"}'>
     <style>
       me {  font-family: 'Iosevka Web' }
-      me h3 { font-size: 2rem; }
-      me hr { margin-top: -1.8em; }
-      me ul { float: right; margin-top: -3em;}
+      me div.header { display: flex; flex-flow: row wrap;}
+      me h3 { font-size: 2.2rem; }
+      me h3.title { margin-left: 0.25em; margin-top: -0.25em; margin-bottom: 0.25em; }
+      me h5.new { font-size: 0.8em; margin-left: 1em; margin-top: 0.5em;  }
+      me hr { margin-top: 0.25em; }
+      me div.links { margin-top: -3em; float: right}
+      @media sm { me div.links { margin-top: -3em }
+      me ul {  margin-top: -0.1em; }
       me li { display: inline;}
       me li a { color: black; }
-      me li a:link { text-decoration: none; } 
+      me li a:link { text-decoration: none; color: black; } 
+      me button {  font-family: 'Iosevka Web'; font-weight: bold; }
+      me div#<%= @css_class %> {  margin-left: 2em; }
     </style>
-    <h3> <%= @title %> </h3>
-    <ul>
-      <li> <a href="/voip_trunks/">TRONCALES</a> </li>
-      <li> <a href="/customers/">CLIENTES</a> </li>
-      <li> <a href="/numbers/">NUMEROS</a> </li>
-      <li> <a href="/domains/">DOMINIOS</a> </li>
-      <li> <a href="/subscriptors/">SUBSCRIPTORES</a> </li>
-      <li> <a href="/cdrs/">CDRS</a> </li>
-    </ul>
-    <hr/>
+    <div class="header">
+      <h3 class="title"> <%= @title %> </h3>
+      <h5 class="new" hx-get="<%= @new_uri %>" hx-trigger="click" hx-target="#domains">
+        <%= @new_label %> 
+      </h5>
+    </div>
+    <div class="links">
+      <ul>
+        <li> <a href="/voip_trunks/">TRONCALES</a> </li>
+        <li> <a href="/customers/">CLIENTES</a> </li>
+        <li> <a href="/numbers/">NUMEROS</a> </li>
+        <li> <a href="/domains/">DOMINIOS</a> </li>
+        <li> <a href="/subscribers/">SUBSCRIPTORES</a> </li>
+        <li> <a href="/cdrs/">CDRS</a> </li>
+      </ul>
+      <hr/>
+    </div>
+    </div>
     <%= yield %>
   </body>
 </html>

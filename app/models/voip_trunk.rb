@@ -1,4 +1,13 @@
 class VoipTrunk < ApplicationRecord
+  belongs_to :entity
+
+  def self.AllFromCustomers
+    all.includes(:entity)
+  end
+
+  def owner_name
+    entity.name
+  end
 end
 # rails generate model VoipTrunk name:string host:string tag:string owner_id:integer trunk_type_id:integer mask:integer port:integer
 # 3. This command will generate a migration file in the `db/migrate` directory with a timestamp and the name of the model (`create_voip_trunks.rb`).

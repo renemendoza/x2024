@@ -1,0 +1,38 @@
+<style>
+  me p.action_new { float: right; }
+</style>
+<div id="cdrs">
+  <table>
+    <thead>
+      <tr>
+        <th colspan=2>Origen</th>
+        <th colspan=2>Destino</th>
+        <th>Fecha</th>
+        <th>Duracion</th>
+        <th>Call ID</th>
+        <th>Cliente</th>
+        <th>Colgado</th>
+      </tr>
+    </thead>
+    <tbody>
+      <% @cdrs.each do |cdr| %>
+        <tr>
+          <style>
+            me td { border: 2px solid #a9a9a9; }
+            me td[n1] { border: 2px solid green; }
+          </style>
+          <td><%= cdr.src_username %></td>
+          <td><%= cdr.src_domain %></td>
+          <td><%= cdr.dst_username %></td>
+          <td><%= cdr.dst_domain %></td>
+          <td><%= cdr.start_time %></td>
+          <td n1><%= cdr.duration %></td>
+          <td><%= cdr.sip_call_id %></td>
+          <td><%= cdr.customer_id %></td>
+          <td ><%= cdr.hangup_party %></td>
+        </tr>
+      <% end %>
+    </tbody>
+  </table>
+</div>
+

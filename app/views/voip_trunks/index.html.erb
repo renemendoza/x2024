@@ -2,12 +2,13 @@
   me p.action_new { float: right; }
 </style>
 <div id="trunks">
-  <p class="action_new" hx-get="/voip_trunks/new"> Agregar Troncal</p>
+  <p class="action_new" hx-get="/voip_trunks/new" hx-trigger="click once"> Agregar Troncal</p>
   <table>
     <thead>
       <tr>
-        <th>name</th>
+        <th>nombre</th>
         <th>host</th>
+        <th>pertenece</th>
       </tr>
     </thead>
     <tbody>
@@ -19,6 +20,7 @@
           </style>
           <td><%= trunk.name %></td>
           <td><%= trunk.host %></td>
+          <td><%= trunk.entity.name %></td>
           <td n1>
             <p hx-delete="/voip_trunks/<%= trunk.id %>"
             hx-swap="outerHTML", hx-target="#trunks">

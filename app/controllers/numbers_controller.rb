@@ -1,6 +1,6 @@
 class NumbersController < ApplicationController
   def index
-    @title = "Numbers"
+    @title = "Numeros"
     @numbers = Number.all
   end
 end
